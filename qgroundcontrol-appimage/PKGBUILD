@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarado <igoutta@protonmail.com>
 # Maintainer: Charles Villard <charlesvillard10@gmail.com>
 # Contributor: Kye Morton <pryre.dev@outlook.com>
-pkgname=qgroundcontrol-daily-appimage
-pkgver=4.9.9
+pkgname=qgroundcontrol-daily
+pkgver=daily
 pkgrel=1
 pkgdesc="Ground control with fresh features for unmanned vehicles."
 arch=('x86_64')
@@ -32,7 +32,15 @@ depends=( 'bzip2'
 		  'sdl2'
 		  'xz'
 		  'zlib'
-		  'icu' )
+		  'icu'
+
+		  'qt6'
+		  'ffmpeg'
+		  'qt6-multimedia-ffmpeg'
+		  'geoclue'
+		  'speech-dispatcher'
+		  'qt6-speech' 
+)
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.AppImage::https://d176tv9ibo4jno.cloudfront.net/builds/master/QGroundControl-x86_64.AppImage")
