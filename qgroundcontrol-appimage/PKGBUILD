@@ -1,9 +1,10 @@
+# Maintainer: Gustavo Alvarado <igoutta@protonmail.com>
 # Maintainer: Charles Villard <charlesvillard10@gmail.com>
 # Contributor: Kye Morton <pryre.dev@outlook.com>
-pkgname=qgroundcontrol-appimage
-pkgver=4.3.0
+pkgname=qgroundcontrol-daily-appimage
+pkgver=4.9.9
 pkgrel=1
-pkgdesc="Ground control for unmanned vehicles."
+pkgdesc="Ground control with fresh features for unmanned vehicles."
 arch=('x86_64')
 url="https://github.com/mavlink/qgroundcontrol"
 license=('GPL3')
@@ -34,20 +35,23 @@ depends=( 'bzip2'
 		  'icu' )
 options=(!strip)
 
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/mavlink/qgroundcontrol/releases/download/v${pkgver}/QGroundControl.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://d176tv9ibo4jno.cloudfront.net/builds/master/QGroundControl-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
 
-sha256sums=('99fbe8e1af1f2ae5fccbc325afa45ed309226a50db4252ec540ca37f56787815')
+sha256sums=('47bb721ca13352b3f14121fa6a2aad877b1f87ad8e7ef8e2753e4e019141ebe8')
 
 build() {
-	echo "[Desktop Entry]
+	tee "$srcdir"/"${pkgname}".desktop > /dev/null << _EOF_
+[Desktop Entry]
 Type=Application
-Name=QGroundControl
-Comment=Ground control for unmanned vehicles
+Name=QGroundControl Daily
 Path=/opt/${pkgname}/
 Exec=/usr/bin/${pkgname}
 Terminal=false
-Categories=Qt;Utility;" > "$srcdir/${pkgname}.desktop"
+Hidden=false
+Categories=Utility
+Comment=Ground control with fresh features for unmanned vehicles
+_EOF_
 }
 
 package() {
